@@ -7,7 +7,7 @@ from pathlib import Path
 
 
 def get_secret(secret_key_alias: str) -> str:
-    return boto3.session.Session().client(service_name='secretsmanager') \
+    return boto3.session.Session().client(service_name='secretsmanager', region_name='eu-west-1') \
         .get_secret_value(SecretId=secret_key_alias)['SecretString']
 
 

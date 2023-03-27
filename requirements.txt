@@ -1,0 +1,4 @@
+boto3
+dbt-core
+dbt-snowflake
+PyYAML~=6.0

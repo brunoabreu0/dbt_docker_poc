@@ -16,22 +16,22 @@ def generate_dbt_profile():
     profiles_dir = Path(sys.argv[1])
     profiles_file_path = os.path.join(profiles_dir, profiles_file_name)
 
-    profile_name = 'dbt_project_poc'
-    env_name = 'dev'
+    profile_name = os.environ['DBT_PROFILE_NAME']
+    target_name = os.environ['DBT_TARGET_NAME']
     profile_yaml = {
         profile_name: {
-            'target': env_name,
+            'target': target_name,
             'outputs': {
-                env_name: {
+                target_name: {
                     'type': 'snowflake',
-                    'account': '',
-                    'user': '',
-                    'password': get_secret(''),
-                    'role': ''.upper(),
-                    'warehouse': '',
-                    'database': '',
-                    'schema': '',
-                    'threads': '',
+                    'account': os.environ['DBT_ACCOUNT'],
+                    'user': os.environ['DBT_USER'],
+                    'password': get_secret(os.environ['DBT_PASSWORD_SECRET_ID']),
+                    'role': os.environ['DBT_ROLE'],
+                    'warehouse': os.environ['DBT_WAREHOUSE'],
+                    'database': os.environ['DBT_DATABASE'],
+                    'schema': os.environ['DBT_SCHEMA'],
+                    'threads': int(os.environ['DBT_THREADS']),
                 }
             }
         }

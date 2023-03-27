@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+import boto3
 import os
 import sys
 import yaml
@@ -6,7 +7,8 @@ from pathlib import Path
 
 
 def get_secret(secret_key_alias: str) -> str:
-    return ''
+    return boto3.session.Session().client(service_name='secretsmanager') \
+        .get_secret_value(SecretId=secret_key_alias)['SecretString']
 
 
 def generate_dbt_profile():

@@ -38,6 +38,8 @@ ENV INSTALL_PATH /usr/src/app
 RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 
+RUN  apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
 RUN install_packages python3.9-minimal python3-pip awscli
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt

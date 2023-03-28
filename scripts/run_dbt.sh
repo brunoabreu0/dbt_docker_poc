@@ -4,9 +4,9 @@ set -e
 echo "Testing connectivity..."
 wget -q --spider http://google.com
 if [ $? -eq 0 ]; then
-  echo ""
+  echo "Online"
 else
-  echo ""
+  echo "Offline"
 fi
 
 echo "Generating dbt profile..."

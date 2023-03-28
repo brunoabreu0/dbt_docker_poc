@@ -4,7 +4,6 @@ set -e
 echo "Generating dbt profile..."
 export DBT_PROFILES_DIR=/usr/src/app
 ./scripts/generate_dbt_profile.py $DBT_PROFILES_DIR
-cat $DBT_PROFILES_DIR/profiles.yml
 
 echo "Cloning dbt project..."
 git clone "$DBT_PROJECT_GIT_REPOSITORY" dbt_project

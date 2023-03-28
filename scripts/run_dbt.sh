@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+echo "Testing connectivity..."
+wget -q --spider http://google.com
+if [ $? -eq 0 ]; then
+  echo ""
+else
+  echo ""
+fi
+
 echo "Generating dbt profile..."
 export DBT_PROFILES_DIR=/usr/src/app
 ./scripts/generate_dbt_profile.py $DBT_PROFILES_DIR

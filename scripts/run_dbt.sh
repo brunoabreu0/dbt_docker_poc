@@ -23,5 +23,5 @@ dbt deps
 echo "dbt project dependency packages has been successfully installed."
 
 echo "Running dbt command: '$DBT_COMMAND'"
-dbt "$DBT_COMMAND" --profiles-dir $DBT_PROFILES_DIR
+dbt $DBT_COMMAND --profiles-dir $DBT_PROFILES_DIR
 echo "dbt project has successfully run."
